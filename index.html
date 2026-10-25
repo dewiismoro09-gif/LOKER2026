@@ -7,10 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Script Network CPM bawaan -->
     <script src="https://pl30149101.effectivecpmnetwork.com/56/b2/10/56b2106b507ca55d4ff1ac2349a3f623.js"></script>
     <script src="https://pl30149100.effectivecpmnetwork.com/99/7d/17/997d179d492de9492e40d7bb139928e4.js"></script>
+
+    <style>
+        /* Animasi bergerak naik-turun perlahan untuk iklan bawah */
+        @keyframes floatBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .animate-floating {
+            animation: floatBounce 2.5s ease-in-out infinite;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col pb-24">
 
     <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -25,27 +41,53 @@
     </header>
 
     <main class="container mx-auto px-4 py-8 flex-grow">
-       <section>
+        <section>
             <div class="mb-6">
                 <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-                   <i class="fa-solid fa-images text-blue-600"></i>
-Album Info Lowongan Kerja
-               </h2>
+                    <i class="fa-solid fa-images text-blue-600"></i>
+                    Album Info Lowongan Kerja
+                </h2>
                 <p class="text-sm text-gray-500 mt-1">Daftar brosur lowongan kerja aktif di wilayah Jakarta, Bogor, Depok, Tangerang, dan Bekasi.</p>
-           </div>
+            </div>
 
             <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-           </div>
-       </section>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-gray-800 text-gray-400 text-center py-4 text-sm mt-12 border-t border-gray-700">
-       <p>&copy; 2026 <span class="font-semibold text-white">infolokerjabodetabek</span>. All rights reserved.</p>
+        <p>&copy; 2026 <span class="font-semibold text-white">infolokerjabodetabek</span>. All rights reserved.</p>
     </footer>
 
+    <!-- BANNER IKLAN BERGERAK DI BAWAH (TANPA PERLU DIKLIK) -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 p-2 flex justify-center pointer-events-none">
+        <div class="animate-floating bg-gradient-to-r from-amber-500 via-red-500 to-pink-500 text-white px-6 py-3 rounded-t-xl shadow-2xl border-t-2 border-yellow-300 flex items-center gap-3 max-w-lg w-full justify-between pointer-events-auto">
+            <div class="flex items-center gap-3">
+                <span class="bg-yellow-300 text-black text-xs font-extrabold px-2 py-0.5 rounded animate-pulse">SPONSORED</span>
+                <p class="text-xs sm:text-sm font-bold tracking-wide">
+                    🔥 Update Lowongan Kerja Terbaru 2026!
+                </p>
+            </div>
+            <i class="fa-solid fa-arrow-trend-up text-yellow-200 text-lg"></i>
+        </div>
+    </div>
+
     <script>
-        // URL Iklan 1 (Direct Link) yang dituju saat tombol klik aktif
+        // URL Iklan Direct Link / Bitly saat website diklik
+        const URL_IKLAN_KLIK = "https://bit.ly/Loker-Indonesia2026";
+        
+        // URL Iklan bawaan dari tombol "Lamar Sekarang"
         const URL_IKLAN = "https://www.profitableratecpmnetwork.com/dkrsq6ng4?key=c73bb6b5ed43ce06d429b5c840c1e023";
+
+        // Logic memicu iklan saat area website mana saja diklik
+        let iklanSudahMuncul = false;
+        document.addEventListener('click', function(e) {
+            // Hindari pemicuan ganda jika mengklik tombol "Lamar Sekarang" secara langsung
+            if (!iklanSudahMuncul && !e.target.closest('a')) {
+                iklanSudahMuncul = true;
+                window.open(URL_IKLAN_KLIK, '_blank');
+            }
+        });
 
         // DATA ALBUM LOKER RESMI
         const dataLoker = [
@@ -90,48 +132,48 @@ Album Info Lowongan Kerja
 
         // Fungsi mengalihkan user ke iklan lalu membuka tab baru untuk lowongan asli
         function tanganiLamar(event, careerLink) {
-           event.preventDefault(); // Menghentikan aksi link bawaan agar script ini berjalan dulu
+            event.preventDefault();
 
             // 1. Membuka website karir resmi di tab baru
-           window.open(careerLink, '_blank');
+            window.open(careerLink, '_blank');
              
-           // 2. Mengalihkan tab saat ini ke halaman iklan 1
-           window.location.href = URL_IKLAN; 
+            // 2. Mengalihkan tab saat ini ke halaman iklan 1
+            window.location.href = URL_IKLAN; 
         }
 
         // Fungsi untuk menampilkan foto ke dalam album grid
         function tampilkanAlbum() {
-           galleryGrid.innerHTML = "";
+            galleryGrid.innerHTML = "";
 
-           dataLoker.forEach((loker) => {
+            dataLoker.forEach((loker) => {
                 const card = document.createElement('div');
-               card.className = "bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition duration-300 flex flex-col justify-between group";
-               card.innerHTML = `
-                   <div>
-                       <div class="relative overflow-hidden h-64 bg-gray-100 flex items-center justify-center border-b">
+                card.className = "bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden h-64 bg-gray-100 flex items-center justify-center border-b">
                             <img src="${loker.image}" alt="${loker.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                           <span class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                            <span class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                                 ${loker.company}
-                           </span>
-                       </div>
-                       <div class="p-5">
-                           <h3 class="font-semibold text-gray-800 text-base leading-snug line-clamp-3 group-hover:text-blue-600 transition">
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-gray-800 text-base leading-snug line-clamp-3 group-hover:text-blue-600 transition">
                                 ${loker.title}
-                           </h3>
-                       </div>
-                   </div>
-                   <div class="px-5 pb-5">
-                       <div class="flex items-center justify-between text-xs text-gray-400 mb-4 pt-2 border-t border-gray-100">
-                           <span><i class="fa-regular fa-calendar-days mr-1"></i> ${loker.date}</span>
-                           <span class="bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Aktif</span>
-                       </div>
-                       <a href="${loker.careerLink}" onclick="tanganiLamar(event, '${loker.careerLink}')" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded-lg transition shadow-sm block text-sm flex items-center justify-center gap-2 cursor-pointer">
-                           Lamar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                       </a>
-                   </div>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5">
+                        <div class="flex items-center justify-between text-xs text-gray-400 mb-4 pt-2 border-t border-gray-100">
+                            <span><i class="fa-regular fa-calendar-days mr-1"></i> ${loker.date}</span>
+                            <span class="bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Aktif</span>
+                        </div>
+                        <a href="${loker.careerLink}" onclick="tanganiLamar(event, '${loker.careerLink}')" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded-lg transition shadow-sm block text-sm flex items-center justify-center gap-2 cursor-pointer">
+                            Lamar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
                 `;
-               galleryGrid.appendChild(card);
-           });
+                galleryGrid.appendChild(card);
+            });
         }
 
         window.onload = tampilkanAlbum;
