@@ -6,13 +6,12 @@
     <title>Info Loker Jabodetabek - Galeri Lowongan Kerja</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+ 
     <script src="https://pl30149101.effectivecpmnetwork.com/56/b2/10/56b2106b507ca55d4ff1ac2349a3f623.js"></script>
-    
     <script src="https://pl30149100.effectivecpmnetwork.com/99/7d/17/997d179d492de9492e40d7bb139928e4.js"></script>
 </head>
 <body class="bg-gray-50 font-sans min-h-screen flex flex-col">
-
+ 
     <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
@@ -24,9 +23,8 @@
             </p>
         </div>
     </header>
-
+ 
     <main class="container mx-auto px-4 py-8 flex-grow">
-        
         <section>
             <div class="mb-6">
                 <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
@@ -34,22 +32,29 @@
                 </h2>
                 <p class="text-sm text-gray-500 mt-1">Daftar brosur lowongan kerja aktif di wilayah Jakarta, Bogor, Depok, Tangerang, dan Bekasi.</p>
             </div>
-
+ 
             <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-                </div>
+            </div>
         </section>
     </main>
-
+ 
     <footer class="bg-gray-800 text-gray-400 text-center py-4 text-sm mt-12 border-t border-gray-700">
         <p>&copy; 2026 <span class="font-semibold text-white">infolokerjabodetabek</span>. All rights reserved.</p>
     </footer>
-
+ 
     <script>
         // URL Iklan 1 (Direct Link) yang dituju saat tombol klik aktif
         const URL_IKLAN = "https://www.profitableratecpmnetwork.com/dkrsq6ng4?key=c73bb6b5ed43ce06d429b5c840c1e023";
-
+ 
         // DATA ALBUM LOKER RESMI
         const dataLoker = [
+            {
+                company: "PT Surya Citra Media Tbk (SCM / SCTV)",
+                title: "SCM Career Program - PR Off-Air Officer & Broadcast Positions (Penempatan SCTV Tower Jakarta)",
+                image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=600&q=80",
+                date: "2026-2027",
+                careerLink: "https://career.scm.co.id/jobs"
+            },
             {
                 company: "PT Astra International Tbk",
                 title: "Astra Career Program - Salesman & Operation Staff (Penempatan Wilayah Bogor, Depok, Bekasi & Jakarta)",
@@ -72,24 +77,24 @@
                 careerLink: "https://e-recruitment.kai.id/"
             }
         ];
-
+ 
         const galleryGrid = document.getElementById('galleryGrid');
-
+ 
         // Fungsi mengalihkan user ke iklan lalu membuka tab baru untuk lowongan asli
         function tanganiLamar(event, careerLink) {
             event.preventDefault(); // Menghentikan aksi link bawaan agar script ini berjalan dulu
-
+ 
             // 1. Membuka website karir resmi di tab baru
             window.open(careerLink, '_blank');
             
             // 2. Mengalihkan tab saat ini ke halaman iklan 1
             window.location.href = URL_IKLAN; 
         }
-
+ 
         // Fungsi untuk menampilkan foto ke dalam album grid
         function tampilkanAlbum() {
             galleryGrid.innerHTML = "";
-
+ 
             dataLoker.forEach((loker) => {
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition duration-300 flex flex-col justify-between group";
@@ -120,7 +125,7 @@
                 galleryGrid.appendChild(card);
             });
         }
-
+ 
         window.onload = tampilkanAlbum;
     </script>
 </body>
